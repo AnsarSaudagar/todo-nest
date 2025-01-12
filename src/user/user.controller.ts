@@ -26,6 +26,13 @@ export class UserController {
     return this.userService.findOne(req.user.sub);
   }
 
+  @UseGuards(AuthGuard)
+  @Get('status')
+  getStatus(@Request() req: any){
+      // console.log(req);
+      return this.userService.findStatus(req.user.sub);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.userService.findOne(id);
@@ -40,4 +47,6 @@ export class UserController {
   remove(@Param('id') id: string) {
     return this.userService.remove(+id);
   }
+
+  
 }
