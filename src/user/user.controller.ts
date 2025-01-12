@@ -26,12 +26,7 @@ export class UserController {
     return this.userService.findOne(req.user.sub);
   }
 
-  @UseGuards(AuthGuard)
-  @Get('status')
-  getStatus(@Request() req: any){
-      // console.log(req);
-      return this.userService.findStatus(req.user.sub);
-  }
+ 
 
   @Get(':id')
   findOne(@Param('id') id: string) {

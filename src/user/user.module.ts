@@ -8,6 +8,8 @@ import { AuthService } from './auth/auth.service';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule } from '@nestjs/config';
 import { AuthGuard } from './auth/auth.guard';
+import { TaskCategoriesController } from './task-categories/task-categories.controller';
+import { TaskCategoriesService } from './task-categories/task-categories.service';
 
 @Module({
   imports: [
@@ -19,7 +21,7 @@ import { AuthGuard } from './auth/auth.guard';
     }),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
   ],
-  controllers: [UserController, AuthController],
-  providers: [UserService, AuthService, AuthGuard],
+  controllers: [UserController, AuthController, TaskCategoriesController],
+  providers: [UserService, AuthService, AuthGuard, TaskCategoriesService],
 })
 export class UserModule {}
