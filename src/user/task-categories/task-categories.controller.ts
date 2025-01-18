@@ -15,4 +15,12 @@ export class TaskCategoriesController{
         const userId = req.user.sub;
         return this.taskCategoryService.findStatus(userId);
     }
+
+    @UseGuards(AuthGuard)
+    @Patch()
+    updateStatus(@Request() req: any){
+        const userId = req.user.sub;
+        return this.taskCategoryService.updateStatus(userId, req.body);
+        // return req.body;
+    }
 }

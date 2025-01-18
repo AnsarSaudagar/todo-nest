@@ -21,4 +21,10 @@ export class TaskCategoriesService {
 
     return result['task_status'] || [];
   }
+
+  async updateStatus(id: string, new_status: any){
+    const result: any = await this.userModel.updateOne({_id: id}, {task_status: new_status}).exec();
+    
+    return result['task_status'];
+  }
 }
