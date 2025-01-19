@@ -14,6 +14,12 @@ export class User extends Document {
     { name: 'Not Started', color: '#F21E1E' },
   ];
 
+  private static default_priorities: TaskStatus[] = [
+    { name: 'Extreme', color: '#05A301' },
+    { name: 'Moderate', color: '#0225FF' },
+    { name: 'Low', color: '#F21E1E' },
+  ];
+
   @Prop({ required: true })
   first_name: string;
 
@@ -42,5 +48,10 @@ export class User extends Document {
     default: User.default_status,
   })
   task_status: TaskStatus[];
+
+  @Prop({
+    default: User.default_priorities,
+  })
+  task_priorities: TaskStatus[];
 }
 export const UserSchema = SchemaFactory.createForClass(User);
