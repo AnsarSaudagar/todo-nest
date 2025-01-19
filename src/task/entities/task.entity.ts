@@ -7,6 +7,9 @@ export class Task extends Document {
   @Prop({ required: true })
   title: string;
 
+  @Prop({required: true})
+  user_id: string;
+
   @Prop({ required: true })
   description: string;
 

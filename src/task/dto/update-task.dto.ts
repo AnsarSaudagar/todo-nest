@@ -3,10 +3,11 @@ import { CreateTaskDto } from './create-task.dto';
 import { TaskStatus } from 'src/user/entities/user.entity';
 
 export class UpdateTaskDto extends PartialType(CreateTaskDto) {
-    title: string;
-    description: string;
-    image ?: string;
-    deadline : Date;
-    priority ?: TaskStatus;
-    status ?: TaskStatus;
+  title?: string;
+  description?: string;
+  user_id?: string;
+  image?: string;
+  deadline?: Date;
+  priority?: TaskStatus;
+  status?: TaskStatus;
 }
