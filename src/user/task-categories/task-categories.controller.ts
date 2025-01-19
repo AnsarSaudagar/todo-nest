@@ -17,10 +17,16 @@ export class TaskCategoriesController{
     }
 
     @UseGuards(AuthGuard)
+    @Get('priority')
+    getPriority(@Request() req: any){
+        const userId = req.user.sub;
+        return this.taskCategoryService.findPriority(userId);
+    }
+
+    @UseGuards(AuthGuard)
     @Patch()
     updateStatus(@Request() req: any){
         const userId = req.user.sub;
         return this.taskCategoryService.updateStatus(userId, req.body);
-        // return req.body;
     }
 }

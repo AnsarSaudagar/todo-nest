@@ -22,8 +22,22 @@ export class TaskCategoriesService {
     return result['task_status'] || [];
   }
 
-  async updateStatus(id: string, new_status: any){
-    const result: any = await this.userModel.updateOne({_id: id}, {task_status: new_status}).exec();
+  async findPriority(id: string) {
+    const result: any = await this.userModel
+      .findOne(
+        { _id: new ObjectId(id) },
+        {
+          _id: 0,
+          task_priorities: 1,
+        },
+      )
+      .exec();
+
+    return result['task_priorities'] || [];
+  }
+
+  async updateStatus(id: string, new_data: any){
+    const result: any = await this.userModel.updateOne({_id: id}, new_data).exec();
     
     return result['task_status'];
   }
