@@ -10,7 +10,7 @@ export class TaskService {
   constructor(@InjectModel(Task.name) private taskModel: Model<Task>) {}
 
   async create(createTaskDto: CreateTaskDto) {
-    // return 'This action adds a new task';
+
     const task = await this.taskModel.create(createTaskDto);
     return task;
   }
